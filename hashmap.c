@@ -123,9 +123,8 @@ Pair * searchMap(HashMap * map,  char * key) {
         map->current = j;
         return map->buckets[j];
       }
-    
+      return NULL;
     }
-    return NULL;
 }
 
 Pair * firstMap(HashMap * map) {
