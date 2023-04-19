@@ -97,23 +97,23 @@ void eraseMap(HashMap * map,  char * key) {
 
 }
 
-Pair * searchMap(HashMap * map,  char * key) 
+Pair * searchMap(HashMap * map,  char * key) // Listo
 {   
   int pos = hash(key,map->capacity);
 
-  if(map->buckets[pos] == NULL) return NULL;
+  if(map->buckets[pos] == NULL) return NULL; // pos nula return null
 
-  if(strcmp(map->buckets[pos]->key,key) == 0)
+  if(strcmp(map->buckets[pos]->key,key) == 0) // si se encontro rapidamente
   {
     map->current = pos;
     return map->buckets[pos];
   }
   else
   {
-    for(int i=pos ; i < map->capacity + pos ; i++)
+    for(int i=pos ; i < map->capacity + pos ; i++) // siguientes posiciones posibles
     {
       
-      int j = i % map->capacity;
+      int j = i % map->capacity; // nunca esta llena
       if(map->buckets[j] == NULL) return NULL;
       
       if(strcmp(map->buckets[j]->key,key) == 0)
