@@ -8,3 +8,12 @@ Wed 19 Apr 2023 11:48:55 PM UTC:
  tests:  1|5
 total_score: 10/70
 9509e31
+Wed 19 Apr 2023 11:50:57 PM UTC: 
+ hashmap.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c:70:1: error: expected identifier or ‘(’ before ‘}’ token
+   70 | }
+      | ^
+Compilation failed
+b072542
