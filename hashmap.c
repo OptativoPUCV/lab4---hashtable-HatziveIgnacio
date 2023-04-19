@@ -40,22 +40,20 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
- int pos = hash(key,map->capacity);
-  Pair *par = createPair(key,value);
+ int pos = hash(key,map->capacity); // hash a la key
+  Pair *par = createPair(key,value); // par
 
-  if(map->buckets[pos] == NULL)
+  if(map->buckets[pos] == NULL) // Si esta vacio
   {
     map->buckets[pos] = par;
     map->current = pos;
-    
   }
   else
   {
-
-    for(int i=pos ; i < map->capacity + pos ; i++)
+    for(int i=pos ; i < map->capacity + pos ; i++) // hasta encontrar pos nula
     {
       int j = i % map->capacity;
-      if(map->buckets[j] == NULL || map->buckets[j]->key == NULL){
+      if(map->buckets[j] == NULL || map->buckets[j]->key == NULL){ 
 
         map->buckets[j] = par;
         map->current = j;
@@ -66,7 +64,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     
   }
   map->size++;
-}
+} // Listo
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
@@ -75,7 +73,7 @@ void enlarge(HashMap * map) {
 }
 
 
-HashMap * createMap(long capacity) // listo
+HashMap * createMap(long capacity) // Listo
 {
   HashMap *map = malloc(sizeof(HashMap));
   if( map == NULL) exit(EXIT_FAILURE);
@@ -100,8 +98,35 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
+  int pos = hash(key,map->capacity);
 
+  if(map->buckets[pos] == NULL)
+  {
+    return NULL;
+  }
 
+  if(strcmp(map->buckets[pos]->key,key) == 0)
+  {
+
+    map->current = pos;
+    return map->buckets[pos];
+
+  }
+  else
+  {
+
+    for(int i=pos ; i < map->capacity + pos ; i++)
+    {
+      
+      int j = i % map->capacity;
+      if(map->buckets[j] == NULL) return NULL;
+      
+      if(strcmp(map->buckets[j]->key,key) == 0){
+        map->current = j;
+        return map->buckets[j];
+      }
+    
+    }
     return NULL;
 }
 
