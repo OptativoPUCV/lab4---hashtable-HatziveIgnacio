@@ -17,3 +17,9 @@ hashmap.c:70:1: error: expected identifier or ‘(’ before ‘}’ token
       | ^
 Compilation failed
 b072542
+Wed 19 Apr 2023 11:51:35 PM UTC: 
+ hashmap.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+ tests:  5|4
+total_score: 30/70
+2871f04
