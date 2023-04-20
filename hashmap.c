@@ -92,9 +92,18 @@ HashMap * createMap(long capacity) // Listo
   return map;
 }
 
-void eraseMap(HashMap * map,  char * key) {    
+void eraseMap(HashMap * map,  char * key) 
+{    
+  int pos = hash(key, map->capacity);
+  if(map->buckets[pos] == NULL) return;
 
+  if(strcmp(map->buckets[pos]->key,key) == 0)
+  {
+    map->buckets[pos]->key == NULL;
+    map->size--;
+  }
 
+  
 }
 
 Pair * searchMap(HashMap * map,  char * key) // Listo
