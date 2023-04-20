@@ -97,10 +97,26 @@ void eraseMap(HashMap * map,  char * key)
   int pos = hash(key, map->capacity);
   if(map->buckets[pos] == NULL) return;
 
-  if(strcmp(map->buckets[pos]->key,key) == 0)
+  if(strcmp(map->buckets[pos]->key,key) == 0) // caso rapido
   {
     map->buckets[pos]->key = NULL;
     map->size--;
+    return;
+  }
+  else 
+  {
+    for(int i=pos ; i < map->capacity + pos ; i++)
+      {
+        int j = i % map->capacity; // nunca esta llena
+        if(map->buckets[j] == NULL) return;
+
+        if(strcmp(map->buckets[j]->key,key) == 0)
+        {
+          map->buckets[pos]->key = NULL;
+          map->size--;
+          return;
+        }
+      }
   }
 
   
