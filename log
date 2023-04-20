@@ -213,3 +213,9 @@ Thu 20 Apr 2023 12:08:04 AM UTC:
  tests:  13|2
 total_score: 50/70
 0afe1a0
+Thu 20 Apr 2023 12:08:55 AM UTC: 
+ hashmap.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+ tests:  16|1
+total_score: 60/70
+63441c0

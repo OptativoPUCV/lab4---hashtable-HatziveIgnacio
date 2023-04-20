@@ -165,7 +165,17 @@ Pair * firstMap(HashMap * map)
   return NULL;
 }
 
-Pair * nextMap(HashMap * map) {
-
-    return NULL;
+Pair * nextMap(HashMap * map)
+{
+  int condicion = map->capacity;
+  for(int i = map->current + 1 ; i < condicion ; i++)
+  {
+    
+    if(map->buckets[i] != NULL && map->buckets[i]->key != NULL )
+    {
+      map->current = i;
+      return map->buckets[i];
+    }
+  }
+  return NULL;
 }
